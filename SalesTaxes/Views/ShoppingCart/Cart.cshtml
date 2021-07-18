@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SalesTaxes.ViewModels.ProductViewModel>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h2>Cart</h2>
+
+
+<ul class="list-group list-group-flush">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">@(String.Format("{0} at {1}", item.Item_Name, item.Price))</li>
+    }
+
+</ul>
+<div>
+    @*<button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-url="@Url.Action("SubmitCart","ShoppintCart")"> Checkout and View Receipt </button>*@
+    <a href="@Url.Action("SubmitCart","ShoppingCart")" class="btn btn-primary">Checkout and View Receipt</a>
+
+    
+</div>
+

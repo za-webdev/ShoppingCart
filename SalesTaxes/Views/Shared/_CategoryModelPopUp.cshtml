@@ -1,0 +1,31 @@
+﻿@model SalesTaxes.ViewModels.CategoryViewModel
+<div class="modal fade" tabindex="-1" id="popUpModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+                <div>
+                    <h4 class="modal-title">Product Category:</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <partial name="_ErrorMessagesPartialView" model="Model" />
+                <form asp-controller="Category" asp-action="AddUpdateCategory" method="post">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="form-group">
+                        <input asp-for="Category_Name" placeholder="Enter Category name" class="form-control" />
+                        <span asp-validation-for="Category_Name" class="text-danger"></span>
+                        <input asp-for="SalesTax" placeholder="Enter Sales Tax" class="form-control" />
+                        <input hidden asp-for="Category_Id" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary button button4" data-save="modal">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SalesTaxes.ViewModels.CategoryViewModel>
+@{
+    ViewData["Title"] = "Product Categories";
+}
+<h2>Product Categories</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Category Name</th>
+            <th scope="col">Salex Tax</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Category_Name</td>
+                <td>@item.SalesTax</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-default pull-left col-lg-11 button button4" data-toggle="ajax-modal" data-target="#popUpModal" data-url="@Url.Action("EditCategory","Category",new {Id= item.Category_Id })">Edit</button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<div id="modal-placeholder"></div>

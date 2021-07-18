@@ -1,0 +1,43 @@
+﻿@model SalesTaxes.ViewModels.ProductViewModel
+<div class="modal fade" tabindex="-1" id="popUpModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+                <div>
+                    <h4 class="modal-title">Product:</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <partial name="_ErrorMessagesPartialView" model="Model" />
+                <form asp-controller="Product" asp-action="AddUpdateProduct" method="post">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="form-group">
+                        <input asp-for="Item_Name" placeholder="Enter product name" class="form-control" />
+                        <span asp-validation-for="Item_Name" class="text-danger"></span>
+                        <br />
+
+                        <input asp-for="Price" placeholder="Enter product price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <br />
+
+                        <br />
+                        <label>Categoies:</label>
+                        <select asp-for="Item_Category_Id" asp-items="Model.ProductCategories" class="form-control">
+                            <option value=@Model.Item_Category_Id></option>
+                        </select>
+                        <span asp-validation-for="Item_Category_Id" class="text-danger"></span>
+
+                        <input hidden asp-for="Item_Id" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary button button4" data-save="modal">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

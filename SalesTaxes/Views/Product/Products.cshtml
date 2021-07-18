@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SalesTaxes.ViewModels.ProductViewModel>
+@{
+    ViewData["Title"] = "Products";
+}
+<h2>Product</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Item_Name</td>
+                <td>@item.Price</td>
+                <td>@item.Item_Category_Name</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-default pull-left col-lg-11 button button4" data-toggle="ajax-modal" data-target="#popUpModal" data-url="@Url.Action("AddToCart","Product",new {Id= item.Item_Id })"> Add to Cart </button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div class="modal-footer">
+    <a href="@Url.Action("GetItemsInCart","ShoppingCart")" class="btn btn-primary">View Cart</a>
+</div>
+<div id="modal-placeholder"></div>
+

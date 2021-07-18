@@ -1,0 +1,16 @@
+﻿@model SalesTaxes.ViewModels.ReceiptViewModel
+@{
+    ViewData["Title"] = "Receipt";
+}
+
+<h2>Receipt</h2>
+<ul class="list-group list-group-flush">
+    @foreach (var item in Model.Items)
+    {
+        <li class="list-group-item">@item.Description</li>
+    }
+
+</ul>
+<p>@(String.Format("SalesTax : {0}",@Model.SalesTaxSum))</p>
+<p>@(String.Format("Total : {0}",@Model.Total))</p>
+

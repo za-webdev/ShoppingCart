@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Market Place</h1>
+        <p class="lead">This is a simple page where you can add product categories with sales tax, add products with prices and view the list of items.</p>
+        <hr class="my-4">
+    </div>
+
+    <div class=" d-flex justify-content-center">
+
+        <div class="row">
+            <div class="col-md-3">
+                <h2> Categories</h2>
+                <div>
+                    <div>
+                        <a href="@Url.Action("GetCategories","Category")" class="btn btn-primary">List of Categories</a>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-default pull-left col-lg-11 button button4"
+                                data-toggle="ajax-modal" data-target="#popUpModal" data-url="@Url.Action("OpenCategoryModel","Category")">
+                            Add a Product Category
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <h2>Products</h2>
+                <div>
+
+                    <div>
+                        <a href="@Url.Action("GetProducts","Product")" class="btn btn-primary">List of Products</a>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-default pull-left col-lg-11 button button4"
+                                data-toggle="ajax-modal" data-target="#popUpModal" data-url="@Url.Action("OpenProductModel","Product")">
+                            Add a Product
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="modal-placeholder"></div>
